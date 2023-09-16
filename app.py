@@ -31,8 +31,10 @@ def order():
 
 @app.route('/test', methods=['post'])
 def test():
+   
+   form = CakeForm()
 
-    def send_email(to, subject, message):
+   def send_email(to, subject, message):
 
         email_address = 'hfcakerobot@gmail.com'
         email_password = empw
@@ -49,7 +51,14 @@ def test():
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
             smtp.login(email_address, email_password)
             smtp.send_message(msg)
-    
-    send_email('aodonovancodes@gmail.com', 'hello', 'beep boop, i am a robut')
-    
+
+   if form.validate_on_submit():
+    print(form.data)
+    message = ''
+    for key in form.data:
+        if key != 'csrf_token':
+            message += f'{key}: {form.data[key]} \n'
+    send_email('aodonovancodes@gmail.com', 'hello', message)
+
     return redirect('/')
+   return redirect('/')

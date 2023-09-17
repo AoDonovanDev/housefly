@@ -6,7 +6,7 @@ flavors = ['Chocolate', 'Vanilla', 'Strawberry', 'Ube', 'Pandan', 'Fig', 'Black 
 'Hummingbird', 'Matcha', 'Lemon', 'Lime', 'Orange', 'Yuzu', 'Lavender', 'Earl Grey', 'Coconut', 'Carrot', 'Golden Milk', 'Mixed Berry', 'Tamarind', 
 'Banana', 'Mountain Dew', 'Corn', 'Honey', 'Chai', 'Peach', 'Lychee']
 
-flavor_choices = [(flavor, flavor) for flavor in flavors]
+frostings = ['Swiss Meringue Buttercream', 'American Buttercream', 'Cream Cheese']
 
 
 class CakeForm(FlaskForm):
@@ -15,7 +15,7 @@ class CakeForm(FlaskForm):
     size = SelectField('Size', choices=[( 6, '6in (serves 8-10)'), (8, '8in (serves 12-15)'), (10, '10in (serves 20-25)')])
     layers = SelectField('Layers', choices=[1,2,3])
     flavor = SelectField('Flavor', choices=flavors)
-    frosting = SelectField('Frosting', choices=[('vaniller', 'vanilla'), ('buttcream', 'buttcream')])
+    frosting = SelectField('Frosting', choices=frostings)
     filling = SelectField('Filling', choices=[('jam', 'jam'), ('jelly', 'jelly')])
     colors = TextAreaField('Preferred Colors')
     occasion = TextAreaField('Occasion (optional)')
@@ -24,15 +24,13 @@ class CakeForm(FlaskForm):
 
 """
 
-Chocolate, Vanilla, Strawberry, Ube, Pandan, Fig, Black Sesame, Rosemary, Brown Butter, Espresso, Red Velvet, 
-Hummingbird, Matcha, Lemon, Lime, Orange, Yuzu, Lavender, Earl Grey, Coconut, Carrot, Golden Milk, Mixed Berry, Tamarind, 
-Banana, Mountain Dew, Corn, Honey, Chai, Peach, Lychee
-
-Swiss Meringue Buttercream, American Buttercream, Cream Cheese
-
+//fillings?
 Jam, compote, cream cheese, caramel: $5+
+
+//are these fillings?
 Curd, ganache, caramelized honey, pastry cream: $10+
 
+//need to separate which can be combined and which cant
 Simple piped lambeth
 Funky naked
 Swirl base: $5+
